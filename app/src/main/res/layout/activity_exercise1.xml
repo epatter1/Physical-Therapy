@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.mycomputer.pt.Exercise1">
+    tools:context=".ExerciseActivity">
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -24,7 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NEXT"
-        android:id="@+id/button15"
+        android:id="@+id/nextButton"
+        android:onClick="nextButton"
         android:layout_alignTop="@+id/button14"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -53,8 +54,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="describtion of this exercise and details a;lidjp;aifhjre[oiaqsgh[oiqeorighjaoeirjgoaiejrg;oieajroijg;aoirdjgoiaqe`jlr[ogihjeairg"
-        android:id="@+id/textView2"
+        android:text=""
+        android:id="@+id/exerciseDescription"
         android:layout_marginBottom="81dp"
         android:layout_above="@+id/button14"
         android:layout_alignParentLeft="true"
@@ -65,7 +66,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Exercise 1"
-        android:id="@+id/textView3"
+        android:id="@+id/exerciseTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -90,8 +91,8 @@
         android:layout_marginBottom="31dp"
         android:checked="false"
         android:layout_above="@+id/button15"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2" />
+        android:layout_alignRight="@+id/exerciseDescription"
+        android:layout_alignEnd="@+id/exerciseDescription" />
 
     <Button
         android:layout_width="wrap_content"
@@ -99,9 +100,10 @@
         android:text="Start"
         android:id="@+id/button18"
         android:onClick="start2"
-        android:layout_above="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignBaseline="@+id/radioButton"
+        android:layout_alignBottom="@+id/radioButton"
+        android:layout_toRightOf="@+id/radioButton"
+        android:layout_toEndOf="@+id/radioButton" />
 
     <Button
         android:layout_width="wrap_content"
@@ -109,15 +111,15 @@
         android:text="Stop"
         android:id="@+id/button19"
         android:onClick="hide1"
-        android:layout_above="@+id/textView2"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2" />
+        android:layout_above="@+id/exerciseDescription"
+        android:layout_alignRight="@+id/exerciseDescription"
+        android:layout_alignEnd="@+id/exerciseDescription" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/exerciseTitle"
         android:layout_toRightOf="@+id/button14"
         android:layout_toEndOf="@+id/button14" />
 
@@ -136,6 +138,6 @@
         android:id="@+id/textView4"
         android:textSize="@android:dimen/notification_large_icon_height"
         android:layout_alignTop="@+id/imageView3"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3" />
+        android:layout_toRightOf="@+id/exerciseTitle"
+        android:layout_toEndOf="@+id/exerciseTitle" />
 </RelativeLayout>

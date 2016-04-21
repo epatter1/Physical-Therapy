@@ -2,28 +2,50 @@ package com.example.mycomputer.pt;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-public class Exercise1 extends AppCompatActivity {
+import java.util.List;
+
+public class ExerciseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise1);
-//        final VideoView videoView =
-//                (VideoView) findViewById(R.id.videoView1);
-//       videoView.setVideoPath(
-//             "android.resource://" + getPackageName() + "/" + R.raw.movie);
-//        videoView.start();
+
+
+        Bundle b = getIntent().getExtras();//get the exercise value from the button click event
+        String currentExerciseString = b.getString("currentExercise");
+
+
+
+
+        for(Exercise ex : ListActivity.exercises){
+            if(ex.getName().equalsIgnoreCase(currentExerciseString)){
+
+                ListActivity.currentExercise = ex;
+            }
+        }
+        Log.i("ExerciseActivity", ListActivity.currentExercise.getName());
+
+        //bind to view
+        TextView exerciseTitle = (TextView)findViewById(R.id.exerciseTitle);
+        exerciseTitle.setText(ListActivity.currentExercise.getName());
+        TextView exerciseDesciption = (TextView)findViewById(R.id.exerciseDescription);
+        exerciseDesciption.setText(ListActivity.currentExercise.description);
+
+
         final VideoView videoView =
                 (VideoView) findViewById(R.id.videoView1);
         videoView.setVisibility(View.GONE);
+
+
     }
 
 
@@ -96,11 +118,36 @@ public class Exercise1 extends AppCompatActivity {
 
     public void list(View View)
     {
-        Intent activity1= new Intent(this,list.class);
+        Intent activity1= new Intent(this,ListActivity.class);
         startActivity(activity1);
 
-    }
 
+    }
+    //TODO get current exercise and increment by 1
+    public void nextButton(View v) {
+
+        Exercise theNextExercise = new Exercise();
+        //TODO:get list of exercises from the ListActivity
+        List<Exercise> list = ListActivity.exercises;
+        //TDOO: get the currentExercise
+        Exercise current = ListActivity.currentExercise;
+        //TODO: find the index of the currentExercise in the list
+        int currentExerciseIndex = 0;
+
+        for(int i= 0; i < list.size(); i++){
+            Exercise ex = list.get(i);
+            if(ex.getName().equalsIgnoreCase(current.getName())){
+                currentExerciseIndex = i;
+                theNextExercise = list.get(i+1);
+                TextView title = (TextView)findViewById(R.id.exerciseTitle);
+                title.setText(theNextExercise.getName());
+
+            }
+        }
+
+        //TODO: get the exercise at the index loation of currentExerciseIndex plus 1
+        //TODO: set the view based off of the nextExercise
+    }
 
     public void MainActivity(View View)
     {

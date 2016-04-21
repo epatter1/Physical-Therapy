@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void list(View View)
     {
-        Intent activity1= new Intent(this,list.class);
+        Intent activity1= new Intent(this,ListActivity.class);
         startActivity(activity1);
 
     }
